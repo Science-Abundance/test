@@ -1,0 +1,45 @@
+# Science.yml Project Manifest
+# Auto-generated for Test
+
+name: Test
+slug: test
+
+# Container image (pinned by digest for reproducibility)
+image: ghcr.io/Science-Abundance/sci-pydata@sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+
+# Git configuration
+default_ref: main
+
+# Working directory (subfolder within repo, if monorepo)
+workdir: ""
+
+# Data configuration
+datasets: {}
+
+# Artifacts storage
+artifacts_bucket: s3://science-artifacts/test/
+
+# Template used
+template: sci-pydata
+
+# Coder workspace defaults
+workspace:
+  cpu_cores: 4
+  memory_gb: 16
+  disk_gb: 100
+  # gpu: 0  # No GPU for CPU workloads
+
+# Pre-commit hooks
+pre_commit:
+  - id: large-file-guard
+    max_size_mb: 50
+    message: "Files >50MB must use Git LFS"
+  - id: lfs-check
+    message: "Ensure LFS patterns are configured"
+
+# CI/CD checks (optional)
+# checks:
+#   - name: policy/check
+#     required: true
+#   - name: bench/check
+#     required: false
